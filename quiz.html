@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bat Photo ID Survey – Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">Bat Photo ID <i>Survey</i></a>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="quiz.html" aria-current="page">Quiz</a></li>
+      <!-- TODO: link to your PHP page, e.g. <li><a href="fotoalbum.php">Photo album</a></li> -->
+      <li><a href="https://tobotuna.myhostpoint.ch/results/">Results</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="banner" id="testBanner" hidden>Test mode: no storage URL is set in config.js. Answers are only written to the browser console.</div>
+
+<!-- ================= QUIZ ================= -->
+<main class="quiz" id="screenQuiz">
+  <div class="progress">
+    <h1 class="count" id="count">Loading photos …</h1>
+    <div class="bar" aria-hidden="true"><span id="barFill"></span></div>
+  </div>
+  <div class="qgrid">
+    <section class="gallery" id="gallery" aria-label="Photos of this observation">
+      <div class="stage">
+        <div class="track" id="track"></div>
+        <button class="navbtn prev" id="prevBtn" type="button" aria-label="Previous photo">‹</button>
+        <button class="navbtn next" id="nextImgBtn" type="button" aria-label="Next photo">›</button>
+        <span class="pill counter" id="imgCounter"></span>
+        <span class="pill zoomhint">Click to enlarge</span>
+      </div>
+      <p class="credit" id="credit" hidden></p>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="swipehint" id="swipeHint"></p>
+    </section>
+    <form class="answer" id="answerForm" autocomplete="off" novalidate>
+      <div class="panelhead">Your identification</div>
+      <div class="field">
+        <label for="taxonInput">Identification</label>
+        <span class="help" id="taxonHelp">Species, species complex or genus, e.g. <span class="taxon">Nyctalus noctua</span>, Complex <span class="taxon">Myotis mystacinus</span> or <span class="taxon">Plecotus</span> sp.</span>
+        <input type="text" id="taxonInput" aria-describedby="taxonHelp" aria-autocomplete="list" aria-controls="suggestList" role="combobox" aria-expanded="false" spellcheck="false">
+        <ul class="suggest" id="suggestList" role="listbox" hidden></ul>
+        <span class="chosen" id="chosen"></span>
+      </div>
+      <div class="field">
+        <label for="featuresInput">Which Identifying features did you use?</label>
+        <span class="help" id="featHelp">e.g. ear shape, tragus, noseleaf, fur colour, roost situation …</span>
+        <textarea id="featuresInput" aria-describedby="featHelp"></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn" id="nextBtn" type="submit" disabled>Next observation</button>
+        <span class="note" id="nextNote">Both fields are required.</span>
+      </div>
+      <p class="status" id="sendStatus" aria-live="polite"></p>
+    </form>
+  </div>
+</main>
+
+<!-- ================= END ================= -->
+<main class="end" id="screenEnd" hidden>
+  <div style="display:grid;gap:12px">
+    <span class="label">Done</span>
+    <h2 class="h1">Thank you!</h2>
+    <p class="lede" style="max-width:65ch">Your answers have been registered. If you like, leave a general comment below.</p>
+  </div>
+  <form class="comment" id="commentForm">
+    <label for="commentInput" style="font-weight:700">General comment (optional)</label>
+    <textarea id="commentInput" placeholder="Anything about the photos, difficult cases, the survey itself …"></textarea>
+    <div class="actions"><button class="btn" type="submit">Show reference identifications</button></div>
+    <p class="status" id="endStatus" aria-live="polite"></p>
+  </form>
+  <section id="resultsWrap" class="resultsWrap" hidden>
+    <h2>Your answers and the reference</h2>
+    <p class="status">Please don't share the reference identifications with other participants.</p>
+    <div class="results" id="results"></div>
+    <p><a class="btn" href="index.html">Choose another quiz</a></p>
+  </section>
+</main>
+
+<footer class="sitefooter">
+  <p>Contact: on iNaturalist @milanpestalozzi</p>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Enlarged photos">
+  <div class="stage">
+    <div class="track" id="lbTrack"></div>
+    <button class="navbtn prev" id="lbPrev" type="button" aria-label="Previous photo">‹</button>
+    <button class="navbtn next" id="lbNext" type="button" aria-label="Next photo">›</button>
+    <span class="pill counter" id="lbCounter"></span>
+    <span class="pill zoomhint" id="lbHint"></span>
+    <span class="pill credit" id="lbCredit" hidden></span>
+  </div>
+  <button class="close" type="button" id="lightboxClose">Close ✕</button>
+</div>
+
+<script src="config.js"></script>
+<script src="photos.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

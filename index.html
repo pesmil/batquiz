@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bat Photo ID Survey – Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">Bat Photo ID <i>Survey</i></a>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <!-- TODO: link to your PHP page, e.g. <li><a href="fotoalbum.php">Photo album</a></li> -->
+      <li><a href="https://tobotuna.myhostpoint.ch/results/">Results</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="banner" id="testBanner" hidden>Test mode: no storage URL is set in config.js. Answers are only written to the browser console.</div>
+
+<!-- ================= START ================= -->
+<main class="start">
+  <figure class="hero"><img src="images/start.jpg" alt="Field photo of a bat"></figure>
+  <h1 id="startTitle"></h1>
+  <p class="lede" id="startIntro"></p>
+  <div>
+    <h2 style="font-size:1.15rem;margin-bottom:10px">How it works</h2>
+    <ul class="howto" id="startHow"></ul>
+  </div>
+  <div class="consent">
+    <p id="startConsent"></p>
+    <label class="check" for="consentBox"><input type="checkbox" id="consentBox"> I have read this and agree to take part.</label>
+  </div>
+  <section>
+    <h2 style="font-size:1.15rem;margin-bottom:10px">Choose a quiz</h2>
+    <ul class="quizlist" id="quizList" tabindex="-1"></ul>
+  </section>
+</main>
+
+<footer class="sitefooter">
+  <p>Contact: on iNaturalist @milanpestalozzi</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="photos.js"></script>
+<script src="start.js"></script>
+</body>
+</html>
