@@ -12,29 +12,7 @@
   "use strict";
   const API = "https://api.inaturalist.org/v1/observations";
   const INAT_CREDITS = {};                       // photo address → "© Author · Licence (iNaturalist)"
-
-  // ---------- local files ----------
-  function safeDecode(s) { try { return decodeURIComponent(s); } catch (e) { return s; } }
-  // adds "images/" and makes spaces and © safe for the browser
-  function fileUrl(name) {
-    if (name.indexOf("/") < 0) name = "images/" + name;
-    return name.split("/").map((part) => encodeURIComponent(safeDecode(part))).join("/");
-  }
-  // "… © Mateusz Ciechanowski CC BY-NC.jpg" → "© Mateusz Ciechanowski · CC BY-NC"
-  const LICENCE = /^(.*?)\s*\b(CC0(?:[ -]\d\.\d)?|CC[ -]BY(?:-(?:NC|SA|ND))*(?:[ -]\d\.\d)?|alle Rechte vorbehalten|all rights reserved|public domain|gemeinfrei)$/i;
-  function creditOf(src) {
-    if (INAT_CREDITS[src]) return INAT_CREDITS[src];
-    const name = safeDecode(String(src).split("/").pop()).replace(/\.[a-z0-9]+$/i, "");
-    const at = name.indexOf("©");
-    if (at < 0) return "";
-    const rest = name.slice(at + 1).trim();
-    const m = rest.match(LICENCE);
-    let author = m ? m[1].trim() : rest, licence = m ? m[2] : "";
-    if (/^alle Rechte vorbehalten$/i.test(licence)) licence = "All rights reserved";
-    if (/^gemeinfrei$/i.test(licence)) licence = "Public domain";
-    return "© " + author + (licence ? " · " + licence : "");
-  }
-
+  
   // ---------- iNaturalist ----------
   // "inat:123/2" or an observation link → { obs: "123", nr: 2 } (nr 0 = all photos)
   function parseInat(entry) {

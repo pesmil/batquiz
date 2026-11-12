@@ -25,7 +25,7 @@
 //  Beliebig viele Beobachtungen und beliebig viele Fotos pro Beobachtung.
 // =====================================================================
 window.QUIZ_QUESTIONS = [
-{ id: "pipkuh5", images: ["inat:176587792/1", "inat:176587792/4"], reference: "Pipistrellus kuhlii" },
+{ id: "pipkuh5", images: ["inat:176587792/1", "inat:176587792/4"], reference: "Pipistrellus kuhlii", note: "" },
 { id: "pippip5", images: ["inat:317375562/1"], reference: "Pipistrellus pipistrellus" },
 { id: "pipnat3", images: ["inat:312969404/2"], reference: "Pipistrellus nathusii" },
 { id: "pipnat4", images: ["inat:251233663/1"], reference: "Pipistrellus nathusii" },

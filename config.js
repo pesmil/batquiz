@@ -27,6 +27,10 @@ window.QUIZ_CONFIG = {
   // Optionale Taxon-Vorschläge von iNaturalist beim Tippen (true/false)
   inatSuggestions: true,
 
+  // Results-Seite (results.html): true = Auswertung anzeigen,
+  // false = nur "The survey is still running" (damit niemand die Lösungen vorher sieht).
+  showResults: true,
+
   // Die Quizze, in dieser Reihenfolge auf der Startseite.
   // id   = Dateiname im Ordner quizzes/ ohne ".js" (z.B. quizzes/plecotus.js)
   // name = Anzeigename (wird kursiv gesetzt)
